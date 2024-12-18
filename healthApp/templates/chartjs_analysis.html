@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+  <body>
+    <div>
+      <canvas id="myChart" style="width: 100%; max-width: 600px"></canvas>
+
+      {% comment %}
+      <script>
+        const xValues = [50,60,70,80,90,100,110,120,130,140,150];
+         const yValues = [7,8,8,9,9,9,10,11,14,14,15];
+
+         const myChart = document.querySelector('#myChart');
+
+         const xValues = [{{x.1}},{{x.2}},{{x.3}},{{x.4}}];
+         const yValues = [{{y.1}},{{y.2}},{{y.3}},{{y.4}}];
+
+         const x = {x:10, y:10}
+
+         new Chart(myChart, {
+           type: "line",
+           data: {
+             datasets: [
+               {
+                 label: "graphName",
+                 data: x,
+                 borderColor: "#36A2EB",
+                 backgroundColor: "#9BD0F5",
+                 tension: 0.2,
+               },
+             ],
+           },
+           options: {
+             scales: {
+               y: {
+                 beginAtZero: true,
+               },
+             },
+           },
+         });
+      </script>
+      {% endcomment %}
+    </div>
+    <div id="my-data" data-info="{{ x|safe, y|safe }}"></div>
+    <script>
+          const ctx = document.getElementById("myChart");
+
+
+          const dataElement = document.getElementById('my-data');
+      const data = JSON.parse(dataElement.dataset.info);
+
+          const x = [{{}}]
+
+          new Chart(ctx, {
+            type: "bar",
+            data: {
+              labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+              datasets: [
+                {
+                  label: "X_value",
+                  data: data,
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true,
+                },
+              },
+            },
+          });
+    </script>
+  </body>
+</html>
+
+{% comment %} <!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+  </head>
+  <body>
+    <canvas id="myChart" style="width: 100%; max-width: 600px"></canvas>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Convert data to JavaScript format
+        const xValues = JSON.parse("{{ x_values|safe }}");
+        const yValues = JSON.parse("{{ y_values|safe }}");
+
+        console.log("X values:", xValues); // Add this
+        console.log("Y values:", yValues); // Add this
+
+        // Initialize the chart
+        new Chart("myChart", {
+          type: "line",
+          data: {
+            labels: xValues,
+            datasets: [
+              {
+                fill: false,
+                lineTension: 0,
+                backgroundColor: "rgba(0,0,255,1.0)",
+                borderColor: "rgba(0,0,255,0.1)",
+                data: yValues,
+              },
+            ],
+          },
+          options: {
+            legend: { display: false },
+            scales: {
+              yAxes: [{ ticks: { beginAtZero: true } }],
+              xAxes: [
+                {
+                  type: "time",
+                  time: {
+                    unit: "minute",
+                    tooltipFormat: "ll HH:mm",
+                    displayFormats: {
+                      minute: "HH:mm",
+                    },
+                  },
+                },
+              ],
+            },
+          },
+        });
+      });
+    </script>
+  </body>
+</html>
+{% endcomment %}

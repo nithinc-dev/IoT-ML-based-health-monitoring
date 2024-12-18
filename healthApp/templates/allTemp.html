@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<h1>temperature</h1>
+{% if objects %}
+<table>
+    <tr>
+        <th>temperature</th>
+        <th>time</th>
+        
+    </tr>
+    
+ {% for i in objects %}
+    <tr>
+     
+        <td> {{i.temperature}} </td>
+        <td>{{i.timestamp}}</td>
+        
+    </tr>
+{% endfor %} 
+   
+</table>    
+{% endif %} 
+{% endblock %}

@@ -1,0 +1,402 @@
+{% load static %} 
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Healthcare{% endblock %}</title>
+    {% block css_files %}{% endblock %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+
+        {% comment %} body {
+            background-image: url('{% static 'images/greece_purple.jpg' %}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: rgba(244, 244, 244, 0.8); /* Adjust the opacity as needed */
+          } {% endcomment %}
+        body {
+          background-image: url('{% static 'images/health.jpg' %}');
+          background-size: cover;
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+          background-color: #f4f4f4; 
+           {% comment %} opacity: 0.5;  {% endcomment %}
+        } 
+        {% comment %} body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity here (0.5 is 50% opacity) */
+            z-index: -1;
+        }  {% endcomment %}
+        {% comment %} #f4f4f4 {% endcomment %}
+
+        {% comment %} body {
+            background-image: url('{% static 'images/greece_purple.jpg' %}');
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            position: relative; /* Ensure the body has a non-static position for the overlay to work */
+        }
+        
+        body::before {
+            content: '';
+            position: fixed; /* Change to fixed */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+         {% endcomment %}
+        h1, h2, h3, h4, h5, h6 {
+            {% comment %} color: #311432; {% endcomment %}
+            color: white;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        @font-face {
+            font-family: 'Bahnschrift';
+            font-style: normal;
+            font-weight: normal;
+            src: local('Bahnschrift');
+        }
+
+        nav {
+            font-family: 'Bahnschrift', 'Arial', sans-serif; /* Use Bahnschrift font */
+            font-weight: bold; /* Make the font thick/bold */
+            text-transform: uppercase; /* Make all text uppercase */
+            color: #000; /* Set the text color to white */
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+             background-color: transparent; /* Remove background color */ 
+        }
+        
+        nav a {
+            color: #192bc2; /* Ensure link text is white */
+            text-decoration: none;
+            margin: 0 10px;
+            font-family: inherit; /* Inherit font-family from nav */
+            font-weight: inherit; /* Inherit font-weight from nav */
+            text-transform: inherit; /* Inherit text-transform from nav */
+        }
+        
+         {% comment %} .container {
+            max-width: 10000000px;
+            margin: 0 auto;
+            min-height: 10vh; /* Add this line */
+            {% comment %} padding: 0.5rem; /* Adjust the padding as needed */ 
+            padding: 1px 1px;
+            background-color: rgba(244, 244, 244, 0.5);
+            border-radius: 36px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex; /* Add this line */
+            flex-direction: column; /* Add this line */
+            justify-content: center; /* Add this line */
+          }  {% endcomment %}
+         .container {
+            max-width: 1000px;
+            margin: 0 auto; 
+            padding: 50px;
+            background-color: rgba(244, 244, 244, 0.4); /* Use rgba for background with opacity */
+            border-radius: 48px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }  
+        footer {
+          background-color: #6F2DA8;
+          color: #fff;
+          padding: 20px;
+            text-align: center;
+            font-family: 'Bahnschrift', 'Arial', sans-serif;
+        }
+
+        
+
+        a {
+            color: white; /* Change link color to white */
+            font-weight: bold; /* Make link text bold */
+            text-decoration: none; /* Remove underline from link */
+        }
+        
+        /* Add hover effect (optional) */
+        a:hover {
+            color: lightgray; /* Optional: Change color on hover */
+        }
+
+
+         table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 18px;
+            text-align: left;
+            color: white;
+        }
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            font-weight: bold;
+            background-color: #f4f4f4;
+            color: black;
+        }
+        {% comment %} th {
+            background-color: #f4f4f4;
+            color: black;
+        }  {% endcomment %}
+
+
+
+
+          form {
+          background-image: url('{% static 'images/image.png' %}');
+          background-size: cover;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 50rem;
+            padding: 5rem;
+            border-radius: 36px;
+            background-color: #c39fd9;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        }
+        
+        button {
+            cursor: pointer;
+            padding: 0.5rem 1.5rem;
+            border-radius: 6px;
+            background-color: #1034a6;
+            color: white;
+            border: 1px solid #1f0050;
+        }
+        #703ba7;
+        #FFFDD0
+        #588BAE
+        #002366
+        #192bc2
+        #1034a6
+        #778899
+        {% comment %} background-color: #1f0050; {% endcomment %}
+        button:hover,
+        button:active {
+            background-color: #320777;
+            border-color: #320777;
+        }
+        
+        .form-control {
+            margin-bottom: 1rem;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-control input,
+        .form-control select {
+            font: inherit;
+            padding: 0.45rem;
+            border-radius: 10px;
+            border: 2px solid #ccc;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+
+
+        
+        .form-control input:focus,
+        .form-control select:focus {
+            border-color: #1f0050;
+            outline: none;
+            background-color: #f4eeff;
+        }
+        {% comment %} border-color: #1f0050; {% endcomment %}
+        .form-control label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .errorlist {
+            list-style: none;
+            margin: 0.5rem 0;
+            padding: 0;
+            color: #680000;
+        }
+        
+        .errors input,
+        .errors select {
+            border-color: #680000;
+            background-color: #fde3e3;
+        }
+        
+        .errors label {
+            color: #680000;
+        }
+        
+        /* Dropdown styles */
+        .form-control select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 0.5rem center;
+            background-size: 1.5rem;
+            padding-right: 2rem;
+        }
+
+
+
+
+
+
+
+
+
+        .overlay {
+            background-color: rgba(255, 255, 255, 0.3); /* Adjust opacity as needed */
+            background-size: cover;
+            height: 100%;
+            display: flex; }
+            {% comment %} align-items: center; {% endcomment %}
+         
+          {% comment %} .content {
+            text-align: center;
+          } {% endcomment %}
+          
+          
+
+        {% comment %} .home-bg {
+            background-image: url('');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+          }
+          
+          .overlay {
+            background-color: rgba(255, 255, 255, 0.5); /* Adjust opacity as needed */
+            height: 100%;
+            display: flex;
+            align-items: center;
+          }
+          
+          .container {
+            max-width: 800px;
+          }
+          
+          .content {
+            text-align: center;
+          }
+          
+          .buttons {
+            margin-top: 20px;
+          }
+          
+          .buttons .btn {
+            margin-right: 10px;
+          } {% endcomment %}
+          
+
+
+          .gallery-container {
+            padding: 40px 5%;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-gap: 20px;
+        }
+        
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+      </style>
+   
+</head>
+<body>
+   
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message | safe }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+    {% endif %}
+    <nav>
+        <a href="{% url 'home' %}">Home</a>
+        {% comment %} <a href="{% url 'emergency' %}">Emergency</a> {% endcomment %}
+        <a href="{% url 'knn' %}">Machine Learning</a>'
+        <a href="{%url 'lastTemperature' %}">Live Temperature</a>
+        <a href="{%url 'lastPulseoxy' %}">Live PulseOxygen</a>
+        {% comment %} <a href="{% url 'p_reg'%}">Register photographer</a>
+        <a href="{% url 's_reg'%}">Register Studio</a>
+        <a href="{% url 'ss'%}">Search Studio</a>
+        <a href="{% url 'appointment'%}">APPOINTMENT</a>
+        <a href="{% url 'all'%}">ALL</a> {% endcomment %}
+        {% comment %} <a href="{% url 'donors_list'%}">All Donors</a> {% endcomment %}
+        {% comment %} <a href="{% url 'search'%}">Search</a>
+        <a href="{% url 'faq'%}">FaQ</a>
+        <a href="{% url 'about' %}">About</a> {% endcomment %}
+
+
+        {% comment %} {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}">Log Out</a>
+        {% else %}
+            <a href="{% url 'login' %}">Log In</a>
+            <a href="{% url 'signup' %}">Sign Up</a>
+            
+        {% endif %} {% endcomment %}
+    </nav> 
+    <main>
+    {% block content %}
+    {% endblock %}
+    </main>
+    <footer>
+        &copy;  2024 Healthcare web app. 
+       <p> All rights reserved. </p>
+        <p>Developer : Nithin </p>
+        <p> cnithin244@gmail.com </p>
+        
+        
+      </footer>
+
+      {% comment %} <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> {% endcomment %}
+</body>
+</html>
+
+

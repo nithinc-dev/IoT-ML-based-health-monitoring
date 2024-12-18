@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home - Health care{% endblock %}
+
+{% block content %}
+<div class="home-bg">
+  <div class="overlay">
+    <div class="container text-center">
+      <div class="content">
+        <h1>Healthcare App!</h1>
+        <p>HealthCare Enhancement with technology</p>
+        <p>View health analysis report</p>
+        
+        <div class="buttons">
+    
+            <button><a href="/all_temp" color: #fff;>Health Analytics report</a></button>
+        </div><hr>
+        <h4>View Patients live data</h4>
+        <div class="buttons">
+    
+            <button><a href="/Tlast" color: #fff;>Live Temperature</a></button>
+        </div>
+        <br>
+        <div class="buttons">
+    
+            <button><a href="/Plast" color: #fff;>Live Pulse</a></button>
+        </div>
+        <br>
+        <div class="buttons">
+    
+            <button><a href="/knn" color: #fff;>Machine Learning Analysis</a></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+
+

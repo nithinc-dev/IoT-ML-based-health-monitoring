@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Using Machine Learning for Health Analysis - KNN Classifier</h1>
+<br><br>
+{% if last_pulseoxy %}
+    {% if outputClass is not None %}
+        <h3>For the input values of pulse rate: {{ last_pulseoxy.bpm }} 
+            and Dissolved Oxygen in Blood: {{ last_pulseoxy.spo2 }}</h3>
+            <br><br>
+        <h3>The Target class is {{ outputClass }}</h3>
+
+        {% if outputClass == 0 %}
+            <h5>Normal Pulse and Dissolved Oxygen</h5>
+        {% endif %}
+
+        {% if outputClass == 1 %}
+            <h5>Abnormal Pulse and Dissolved Oxygen</h5>
+        {% endif %}
+
+        {% if outputClass == 2 %}
+            <h5>Critical condition, Abnormal Pulse and Dissolved Oxygen</h5>
+        {% endif %}
+        <br><br><br><br>
+    {% else %}
+        <h3>Prediction could not be made. No class was returned.</h3>
+        <br><br><br><br>
+    {% endif %}
+{% else %}
+    <h3>No Pulse Oximeter data available.</h3>
+{% endif %}
+
+{% endblock %}
+
+
+{% comment %} {% extends 'base.html' %}
+{% block content %}
+
+<h1>Using Machine Learning for Health Analysis - KNN Classifier</h1>
+<br><br>
+{% if last_pulseoxy %}
+    {% if outputClass is not None %}
+        <h3>For the input values of pulse rate: {{ last_pulseoxy.bpm }} 
+            and Dissolved Oxygen in Blood: {{ last_pulseoxy.spo2 }}</h3>
+            <br><br>
+        <h3>The Target class is {{ outputClass }}</h3>
+
+        {% if outputClass = 0 %}
+
+            <h5>Normal Pulse and dissolved oxygen
+            </h5>
+
+        {%endif%}
+
+        {% if outputClass = 1 %}
+        <h5>Abnormal Pulse and Dissolved Oxygen
+        </h5>
+            
+        {%endif%}
+
+        {% if outputClass = 2 %}
+        <h5>Critical condition, Abnormal Pulse and Dissolved Oxygen
+        </h5>
+        <h5></h5>
+            
+        {%endif%}
+        <br><br><br><br>
+    {% else %}
+        <h3>Prediction could not be made. No class was returned.</h3>
+        <br><br><br><br>
+    {% endif %}
+{% else %}
+    <h3>No Pulse Oximeter data available.</h3>
+{% endif %}
+
+{% endblock %} {% endcomment %}
+
+
+
+{% comment %} {% extends 'base.html' %}
+{% block content %}
+
+<h1>Using Machine Learning for health analysis - KNN Classifier</h1>
+
+{% if outputClass %}
+
+<h3>For the input values of pulse rate: {{last_pulseoxy.bpm}} 
+    and Dissolved Oxygen in Blood: {{last_pulseoxy.spo2}}
+The Target class is {{outputClass}}</h3>
+    
+
+{% endif %}
+
+{% endblock %} {% endcomment %}

@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Live! temperature data of patient</h1>
+{% if last_temp %}
+<br>
+<br>
+<hr>
+<p>
+    <h2>Temperature recorded: {{ last_temp.temperature }} ℃</h2>
+    <h2>at time: {{ last_temp.timestamp }}</h2>
+</p>
+<hr>
+<br>
+{% if last_temp.temperature < 36.1 %}
+<h2>Result:</h2>
+    <h3>Possible Hypothermia Symptoms:</h3>
+    <ul><h5>
+        <li>Shivering</li>
+        <li>Slurred speech</li>
+        <li>Slow breathing</li>
+        <li>Cold, pale skin</li>
+    </ul></h5>
+{% elif last_temp.temperature > 37.2 %}
+<h2>Result:</h2>
+    <h3>Possible Fever Symptoms:</h3>
+    <h5>
+    <ul>
+        <li>Sweating</li>
+        <li>Chills and shivering</li>
+        <li>Headache</li>
+        <li>Muscle aches</li>
+        <li>Loss of appetite</li>
+        <li>Irritability</li>
+        <li>Dehydration</li>
+    </ul></h5>
+{% else %}
+<h2>Result:</h2>
+    <h3>Normal Body Temperature</h3>
+{% endif %}
+{% endif %}
+{% endblock %}
+
+
+
+{% comment %} {% extends 'base.html' %}
+{% block content %}
+
+
+<h1>Live temperature data of patient</h1>
+{% if last_temp %}
+<br>
+<br>
+<hr>
+<p> <h2>Temperature recorded:{{last_temp.temperature}}</h2> <h2>at time: {{last_temp.timestamp}}</h2></p>
+<hr>
+<br>
+{% endif %} 
+{% endblock %} {% endcomment %}

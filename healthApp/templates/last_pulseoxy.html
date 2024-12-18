@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Live! Pulse rate and Dissolved oxygen in Blood</h1>
+{% if po %}
+<br>
+<br>
+<hr>
+<p>
+    <h2>Pulse rate: {{ po.bpm}}</h2>
+    <h2>Dissolved Oxygen in blood: {{ po.spo2}}</h2>
+    <h2>at time: {{ po.timestamp }}</h2>
+</p>
+<hr>
+<br>
+{% if po.bpm < 60 %}
+    <h2>Result:</h2>
+    <h3>Possible Hypothermia Symptoms:</h3>
+    <ul><h5>
+        <li>Shivering</li>
+        <li>Slurred speech</li>
+        <li>Slow breathing</li>
+        <li>Cold, pale skin</li>
+    </ul></h5>
+{% elif po.bpm > 100 %}
+<h2>Result:</h2>
+    <h3>Possible Fever Symptoms:</h3>
+    <h5>
+    <ul>
+        <li>Sweating</li>
+        <li>Chills and shivering</li>
+        <li>Headache</li>
+        <li>Muscle aches</li>
+        <li>Loss of appetite</li>
+        <li>Irritability</li>
+        <li>Dehydration</li>
+    </ul></h5>
+{% else %}
+<h2>Result:</h2>
+    <h3>Normal Pulse/Heart rate</h3>
+{% endif %}
+
+
+{% if po.spo2 < 92 %}
+<h2>Result:</h2>
+    <h3>Possible Hypothermia Symptoms:</h3>
+    <ul><h5>
+        <li>Shivering</li>
+        <li>Slurred speech</li>
+        <li>Slow breathing</li>
+        <li>Cold, pale skin</li>
+    </ul></h5>
+{% comment %} {% elif po.spo2 >  %}
+    <h3>Possible Fever Symptoms:</h3>
+    <h5>
+    <ul>
+        <li>Sweating</li>
+        <li>Chills and shivering</li>
+        <li>Headache</li>
+        <li>Muscle aches</li>
+        <li>Loss of appetite</li>
+        <li>Irritability</li>
+        <li>Dehydration</li>
+    </ul></h5> {% endcomment %}
+{% else %}
+<h2>Result:</h2>
+    <h3>Normal Dissolved oxygen in blood</h3>
+{% endif %}
+{% endif %}
+{% endblock %}
